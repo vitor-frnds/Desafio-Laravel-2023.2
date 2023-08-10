@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
 
-            $table->increments('id');          // Chave primária autoincrementável do tipo inteiro
+            $table->bigIncrements('id');          // Chave primária autoincrementável do tipo inteiro
             $table->string('nome', 255);            // Coluna do 'nome'
             $table->string('email', 255);           // Coluna do 'email'
             $table->string('senha', 255);           // Coluna da 'senha'

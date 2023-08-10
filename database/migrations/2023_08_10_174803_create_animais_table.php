@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('animais', function (Blueprint $table) {
             
-            $table->increments('id');          // Chave primária autoincrementável do tipo inteiro
+            $table->bigIncrements('id');          // Chave primária autoincrementável do tipo inteiro
             $table->string('nome', 255);            // Coluna do  'nome'
             $table->string('especie', 255);         // Coluna da  'especie'
             $table->string('raca', 255);            // Coluna da  'raça'
@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('tratamentos_realizados'); // Coluna dos 'tratamentos realizados'
 
             // Coluna da chave estrangeira para a tabela de Proprietarios
+            $table->unsignedBigInteger('proprietarios_id');          // Chave primária autoincrementável do tipo inteiro
             $table->foreign('proprietarios_id')->references('id')->on('proprietarios');
 
             $table->timestamps();

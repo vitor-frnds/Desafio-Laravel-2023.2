@@ -13,17 +13,20 @@ return new class extends Migration
     {
         Schema::create('consultas', function (Blueprint $table) {
 
-            $table->increments('id');          // Chave primária autoincrementável do tipo inteiro
+            $table->bigIncrements('id');          // Chave primária autoincrementável do tipo inteiro
             $table->text('tratamento_realizado');   // Coluna do 'tratamento a ser realizado'
             $table->dateTime('data_inicio');        // Coluna da 'data de início'
             $table->dateTime('data_termino');       // Coluna da 'data de término'
             $table->decimal('custo', 10);           // Coluna do 'custo' com o valor até de 10 casas            
 
-            // Coluna da chave estrangeira para a tabela de Animais
-            $table->foreign('animais_id')->references('id')->on('animais');
 
             // Coluna da chave estrangeira para a tabela de Usuarios
-            $table->foreign('usuarios_id')->references('id')->on('usuarios');
+            $table->unsignedBigInteger('usuario_id');          // Chave primária autoincrementável do tipo inteiro
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
+
+            // Coluna da chave estrangeira para a tabela de Animais
+            $table->unsignedBigInteger('animal_id');           // Chave primária autoincrementável do tipo inteiro
+            $table->foreign('animal_id')->references('id')->on('animais');
 
             $table->timestamps();
         });
