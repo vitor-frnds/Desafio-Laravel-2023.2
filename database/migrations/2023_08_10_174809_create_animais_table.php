@@ -12,7 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('animais', function (Blueprint $table) {
-            $table->id();
+            
+            $table->increments('id');          // Chave primária autoincrementável do tipo inteiro
+            $table->string('nome', 255);            // Coluna do  'nome'
+            $table->string('especie', 255);         // Coluna da  'especie'
+            $table->string('raca', 255);            // Coluna da  'raça'
+            $table->date('data_nascimento');        // Coluna da  'data de nascimento'
+            $table->text('tratamentos_realizados'); // Coluna dos 'tratamentos realizados'
+
+            // Coluna da chave estrangeira para a tabela de Proprietarios
+            $table->foreign('proprietarios_id')->references('id')->on('proprietarios');
+
             $table->timestamps();
         });
     }

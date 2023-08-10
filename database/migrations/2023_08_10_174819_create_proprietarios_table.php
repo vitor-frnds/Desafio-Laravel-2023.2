@@ -12,7 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('proprietarios', function (Blueprint $table) {
-            $table->id();
+
+            $table->increments('id');          // Chave primária autoincrementável do tipo inteiro
+            $table->string('nome', 255);            // Coluna do 'nome'
+            $table->string('foto', 255);            // Coluna da 'foto'
+            $table->string('email', 255);           // Coluna do 'email'
+            $table->string('cpf', 15);              // Coluna do 'cpf'
+            $table->date('data_nascimento');        // Coluna da 'data de nascimento'
+            $table->string('endereco', 255);        // Coluna do 'endereço'
+            $table->string('telefone', 20);         // Coluna do 'telefone'
+
             $table->timestamps();
         });
     }
